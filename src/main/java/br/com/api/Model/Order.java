@@ -13,14 +13,33 @@ import java.util.List;
 public class Order extends GenericClass{
     private Long numberOrder;
     private Double totalValue;
-    @OneToMany(mappedBy = "order")
-    private List<ProductOrder> productOrder;
-    public List<ProductOrder> getProductOrder() {
+    @OneToOne
+    private ProductOrder productOrder;
+
+
+
+    //methods
+    public ProductOrder getProductOrder() {
         return productOrder;
     }
 
-    public void setProductOrder(List<ProductOrder> productOrder) {
+    public void setProductOrder(ProductOrder productOrder) {
         this.productOrder = productOrder;
     }
 
+    public Long getNumberOrder() {
+        return numberOrder;
+    }
+
+    public void setNumberOrder(Long numberOrder) {
+        this.numberOrder = numberOrder;
+    }
+
+    public Double getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(Double totalValue) {
+        this.totalValue = totalValue;
+    }
 }

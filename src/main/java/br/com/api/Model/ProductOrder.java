@@ -15,23 +15,22 @@ public class ProductOrder extends GenericClass{
             joinColumns = @JoinColumn(name = "product_uuid"), // chave estrangeira para a entidade Aluno
             inverseJoinColumns = @JoinColumn(name = "order_uuid") // chave estrangeira para a entidade Curso
     )
-    private Set<Product> product;
-    @ManyToOne
-    private Order order;
+    private Set<ProductItem> productItem;
+    private String orderUuid;
 
-    public Set<Product> getProduct() {
-        return product;
+    public Set<ProductItem> getProduct() {
+        return productItem;
     }
 
-    public void setProduct(Set<Product> product) {
-        this.product = product;
+    public void setProduct(Set<ProductItem> productItem) {
+        this.productItem = productItem;
     }
 
-    public Order getOrder() {
-        return order;
+    public String getOrderUuid() {
+        return orderUuid;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderUuid(String orderUuid) {
+        this.orderUuid = orderUuid;
     }
 }

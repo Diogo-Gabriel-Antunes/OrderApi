@@ -1,4 +1,4 @@
 package br.com.api.DTO;
 
-public record ProductDTO (String uuid,String nome,Double preco){
+public record ProductDTO (String uuid,String nome,Double preco,Double quantity){
 }

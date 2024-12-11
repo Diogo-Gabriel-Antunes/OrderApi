@@ -27,4 +27,12 @@ public class ProductRepository extends Repository{
             throw new RuntimeException(e);
         }
     }
+
+    public void saveChanges(Product product) {
+        em.persist(product);
+    }
+
+    public void delete(Product product) {
+        em.remove(product);
+    }
 }

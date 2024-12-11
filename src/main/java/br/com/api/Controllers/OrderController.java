@@ -2,6 +2,7 @@ package br.com.api.Controllers;
 
 
 import br.com.api.DTO.CreateOrderDTO;
+import br.com.api.DTO.ProductOrderDTO;
 import br.com.api.Model.Order;
 import br.com.api.Services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,20 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity createOrder(@RequestBody CreateOrderDTO createOrderDTO){
-        Order order = orderService.createOrder(createOrderDTO);
+    public ResponseEntity createOrder(@RequestBody ProductOrderDTO productOrderDTO){
+        Order order = orderService.createOrder(productOrderDTO);
         return ResponseEntity.created(URI.create(order.getUuid())).build();
     }
+
+    @PutMapping("{uuid}")
+    public ResponseEntity updateOrder(String uuid,@RequestBody ProductOrderDTO productOrderDTO){
+        Order order = orderService.updateOrder(uuid,productOrderDTO);
+        return ResponseEntity.ok(order);
+    }
+
+    @DeleteMapping
+    public ResponseEntity deleteOrder(String uuid){
+        orderService.deleteOrder(uuid);
+        return ResponseEntity.ok("Pedido selecionado deletado com sucesso");
+    };
 }
